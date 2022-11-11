@@ -1,0 +1,28 @@
+{
+
+	"status": "success",
+	"data": [
+		{
+		"id": 1,
+		"type": "group",
+		"group": "A",
+		"home_team_id": "3",
+		"away_team_id": "4",
+		"home_score": 0,
+		"away_score": 0,
+		"home_scorers": null,
+		"away_scorers": null,
+		"persian_date": "1400-08-30 13:30",
+		"local_date": "2022-11-21 1:00 PM",
+		"stadium_id": "1",
+		"time_elapsed": "Final",
+		"finished": "true",
+		"matchday": 1,
+		"home_team_fa": "سنگال",
+		"away_team_fa": "هلند",
+		"home_team_en": "Senegal",
+		"away_team_en": "Nederland",
+		"home_flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Flag_of_Senegal.svg/125px-Flag_of_Senegal.svg.png",
+		"away_flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Flag_of_the_Netherlands.svg/125px-Flag_of_the_Netherlands.svg.png"
+		}]
+}
