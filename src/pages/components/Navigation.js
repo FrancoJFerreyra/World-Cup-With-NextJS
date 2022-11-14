@@ -13,15 +13,19 @@ import Link from 'next/link';
 const Navigation = () => {
   return (
     <Navbar bg='light' expand='md' className='mb-3'>
-      <Container fluid>
-        <Link className='navbar-brand' href='/'>
-          <img
-            className='logo'
-            src='https://seeklogo.com/images/F/fifa-world-cup-2022-logo-0E5F05028D-seeklogo.com.png'
-            alt='Qatar world cup logo'
-          />
-        </Link>
-        <Navbar.Toggle aria-controls='offcanvasNavbar-expand-md' />
+      <Container fluid='xxl'>
+        <div className='logo__container'>
+          <Link className='navbar-brand' href='/'>
+            <img
+              className='logo'
+              src='https://seeklogo.com/images/F/fifa-world-cup-2022-logo-0E5F05028D-seeklogo.com.png'
+              alt='Qatar world cup logo'
+            />
+          </Link>
+        </div>
+        <div>
+          <Navbar.Toggle aria-controls='offcanvasNavbar-expand-md' />
+        </div>
         <Navbar.Offcanvas
           id='offcanvasNavbar-expand-md'
           aria-labelledby='offcanvasNavbarLabel-expand-md'
@@ -67,15 +71,6 @@ const Navigation = () => {
                 </NavDropdown>
               </li>
             </Nav>
-            <Form className='d-flex'>
-              <Form.Control
-                type='search'
-                placeholder='Search'
-                className='me-2'
-                aria-label='Search'
-              />
-              <Button variant='outline-success'>Search</Button>
-            </Form>
           </Offcanvas.Body>
         </Navbar.Offcanvas>
       </Container>

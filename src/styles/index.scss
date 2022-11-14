@@ -1,11 +1,31 @@
 @import './bootstrap.scss';
 
+.logo__container {
+  width: 50%;
+}
 .logo {
   width: 50%;
 }
 
+//HOME
+// .home__fixtureComponent--container {
+//   padding-bottom: 3rem;
+// }
+.home__fixture--container {
+  border: solid 0.5rem $black;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  row-gap: 1.5rem;
+  width: 100%;
+  margin: 0;
+}
+.fixture__country--img {
+  width: 3rem;
+  height: 2.7rem;
+}
+
 @include media-breakpoint-up(sm) {
   .logo {
-    max-width: 24rem;
+    max-width: 6rem;
   }
 }
