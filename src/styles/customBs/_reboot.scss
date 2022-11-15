@@ -106,6 +106,7 @@ h4 {
 
 h5 {
   @extend %heading;
+  margin-bottom: 0;
   @include font-size($h5-font-size);
 }
 

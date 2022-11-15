@@ -1,11 +1,11 @@
+import { SSRProvider } from 'react-bootstrap';
 import 'styles/index.scss';
-import Layout from './components/Layout';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
+    <SSRProvider>
       <Component {...pageProps} />
-    </Layout>
+    </SSRProvider>
   );
 }
 

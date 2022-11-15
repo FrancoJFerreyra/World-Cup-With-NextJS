@@ -8,16 +8,18 @@
 }
 
 //HOME
-// .home__fixtureComponent--container {
-//   padding-bottom: 3rem;
-// }
+.home__fixtureComponent--container {
+  padding-bottom: 2rem;
+}
 .home__fixture--container {
-  border: solid 0.5rem $black;
-  border-radius: 0.8rem;
-  padding: 1rem;
-  row-gap: 1.5rem;
   width: 100%;
-  margin: 0;
+}
+.home__fixture--matchContainer {
+  row-gap: 1rem;
+  padding: 1rem 0;
+  h5 {
+    margin-left: 0.5rem;
+  }
 }
 .fixture__country--img {
   width: 3rem;

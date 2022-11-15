@@ -15,7 +15,7 @@ const Navigation = () => {
     <Navbar bg='light' expand='md' className='mb-3'>
       <Container fluid='xxl'>
         <div className='logo__container'>
-          <Link className='navbar-brand' href='/'>
+          <Link className='navbar-brand' href='/home'>
             <img
               className='logo'
               src='https://seeklogo.com/images/F/fifa-world-cup-2022-logo-0E5F05028D-seeklogo.com.png'
@@ -43,7 +43,7 @@ const Navigation = () => {
           <Offcanvas.Body>
             <Nav className='justify-content-end flex-grow-1 pe-3' as='ul'>
               <li>
-                <Link className='nav-link' href='/'>
+                <Link className='nav-link' href='/home'>
                   Home
                 </Link>
               </li>

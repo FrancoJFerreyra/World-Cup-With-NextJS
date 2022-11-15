@@ -1,43 +1,57 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Fixture = ({ fixture }) => {
-  const sortedFixture = fixture.sort(
-    (a, b) => new Date(a.local_date) - new Date(b.local_date)
+  const upcomingMatches = fixture.filter(
+    (match) => new Date(match.local_date) > new Date()
   );
+  const sortedFixture = upcomingMatches
+    .sort((a, b) => new Date(a.local_date) - new Date(b.local_date))
+    .slice(0, 4);
   return (
     <div>
       <div>
-        <h2>Fixture</h2>
+        <h2>Proximos partidos</h2>
       </div>
-      <div className='row justify-content-center home__fixture--container'>
-        {sortedFixture.slice(0, 6).map((match) => {
-          return (
-            <div
-              key={match._id}
-              className='col-sm-6 col-md-4 home__fixture--match'
-            >
-              <div className='row text-center'>
-                <div className='col-sm-4 col-md-5'>
-                  <img
-                    className='fixture__country--img'
-                    src={match.home_flag}
-                    alt={match.home_team_en}
-                  />
-                  <p>{match.home_team_en}</p>
+      <table className='home__fixture--container'>
+        <thead>
+          <tr>
+            {sortedFixture.map((match, i) => (
+              <th key={i}>Grupo {match.group}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            {sortedFixture.map((match, i) => (
+              <td key={i}>
+                <div className='home__fixture--matchContainer d-flex flex-column'>
+                  <div className='d-flex align-items-center'>
+                    <img
+                      className='fixture__country--img'
+                      src={match.home_flag}
+                      alt={match.home_team_en}
+                    />
+                    <h5>{match.home_team_en}</h5>
+                  </div>
+                  <div className='d-flex align-items-center'>
+                    <img
+                      className='fixture__country--img'
+                      src={match.away_flag}
+                      alt={match.away_team_en}
+                    />
+                    <h5>{match.away_team_en}</h5>
+                  </div>
                 </div>
-                <p className='col-sm-4 col-md-2 m-auto'>VS</p>
-                <div className='col-sm-4 col-md-5'>
-                  <img
-                    className='fixture__country--img'
-                    src={match.away_flag}
-                    alt={match.away_team_en}
-                  />
-                  <p>{match.away_team_en}</p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+              </td>
+            ))}
+          </tr>
+        </tbody>
+      </table>
+      <div className='text-center'>
+        <Link href={'/qatar'} className='btn btn-success'>
+          Ver fixture
+        </Link>
       </div>
     </div>
   );
