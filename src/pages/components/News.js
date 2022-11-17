@@ -1,10 +1,10 @@
 import React from 'react';
 
 const News = ({ newsList }) => {
-  const Argentina = newsList.filter((e) => e.title.includes('Argentina'));
-  const notArgentina = newsList.filter((e) => !e.title.includes('Argentina'));
-
-  const sortedNews = [...Argentina, ...notArgentina];
+  const sortedNews = newsList.sort(
+    (a, b) =>
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
 
   return (
     <div>
@@ -12,7 +12,7 @@ const News = ({ newsList }) => {
         <h2>Últimas noticias</h2>
       </div>
       <div className='row'>
-        {sortedNews.slice(0, 10).map((notice, i) => {
+        {sortedNews.map((notice, i) => {
           return (
             <div key={i} className='col-md-6'>
               <img
