@@ -1,33 +1,59 @@
 @import './bootstrap.scss';
 
+.navbar__container {
+	background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(141, 28, 61, 1) 39%);
+}
+
 .logo__container {
-  width: 50%;
+	width: 50%;
 }
 .logo {
-  width: 50%;
+	width: 100%;
 }
 
+//NAVIGATION
+#dropdown__title {
+	color: $secondary !important;
+}
 //HOME
 .home__fixtureComponent--container {
-  padding-bottom: 2rem;
+	padding-bottom: 2rem;
 }
-.home__fixture--container {
-  width: 100%;
+//FIXTURE COMPONENT
+.fixture__container {
+	padding: 1rem 0 2rem;
+	row-gap: 2rem;
+	justify-content: center;
 }
-.home__fixture--matchContainer {
-  row-gap: 1rem;
-  padding: 1rem 0;
-  h5 {
-    margin-left: 0.5rem;
-  }
+.fixture__container--match {
+	height: 100%;
+}
+.fixture__match {
+	justify-content: space-between;
+	height: 100%;
+	padding: 1rem;
 }
 .fixture__country--img {
-  width: 3rem;
-  height: 2.7rem;
+	width: 1.2rem;
+	height: 1rem;
 }
-
+.fixture__match--scorers {
+	list-style: none;
+	background-repeat: no-repeat;
+	background-position: left center;
+	background-size: 1rem;
+	background-image: url('https://cdn-icons-png.flaticon.com/512/53/53283.png');
+	p {
+		margin-left: 1.2rem;
+	}
+}
+//GROUPTABLE COMPONENT
+.groups__container {
+	row-gap: 2rem;
+	padding-bottom: 3rem;
+}
 @include media-breakpoint-up(sm) {
-  .logo {
-    max-width: 6rem;
-  }
+	.logo {
+		max-width: 12rem;
+	}
 }
