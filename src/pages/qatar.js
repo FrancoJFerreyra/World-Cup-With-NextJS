@@ -9,9 +9,7 @@ import GroupsTable from './components/GroupsTable';
 
 const Qatar = ({ fixtureList, groups }) => {
   const [showMore, setShowMore] = useState(false);
-  const sorted = fixtureList.sort(
-    (a, b) => new Date(a.local_date) - new Date(b.local_date)
-  );
+  const sorted = fixtureList.sort((a, b) => new Date(a.local_date) - new Date(b.local_date));
   return (
     <>
       <Navigation />
@@ -35,15 +33,14 @@ const Qatar = ({ fixtureList, groups }) => {
               duration: 0.5,
             },
           },
-        }}
-      >
+        }}>
         <div className='container-xxl'>
           <GroupsTable groups={groups} />
           <div className='text-center'>
             <h2>Fixture</h2>
           </div>
-          <Fixture fixture={sorted} showMore={showMore} groups={true} />
-          <div className='text-center'>
+          <Fixture fixture={sorted} showMore={showMore} />
+          <div className='text-center qatar__showMore--btn'>
             <motion.button
               type='button'
               whileHover={{
@@ -51,8 +48,7 @@ const Qatar = ({ fixtureList, groups }) => {
                 boxShadow: '0px 0px 16px rgb(176,150,119)',
               }}
               onClick={() => setShowMore(!showMore)}
-              className='btn btn-primary border border-3'
-            >
+              className='btn btn-primary border border-3'>
               {showMore ? 'Ver menos' : 'Ver mas'}
             </motion.button>
           </div>
@@ -65,19 +61,13 @@ const Qatar = ({ fixtureList, groups }) => {
 export default Qatar;
 
 export const getServerSideProps = async ({ req, res }) => {
-  const dataMatches = await axios.post(
-    'http://localhost:3000/api/qatar/token',
-    {
-      path: '/match',
-    }
-  );
+  const dataMatches = await axios.post('http://localhost:3000/api/qatar/token', {
+    path: '/match',
+  });
   // const dataGroups = await axios.post('http://localhost:3000/api/qatar/token', {
   //   path: '/standings',
   // });
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=60, stale-while-revalidate=120'
-  );
+  res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=120');
   return {
     props: {
       groups: dataGroups.data,

@@ -27,6 +27,20 @@ body {
 .home__fixtureComponent--container {
   padding-bottom: 2rem;
 }
+
+//QATAR
+.qatar__showMore--btn {
+  padding-bottom: 2rem;
+}
+//NEWS COMPONENT
+.news__container {
+  row-gap: 1.5rem;
+}
+.news__title {
+  &:hover {
+    color: red;
+  }
+}
 //FIXTURE COMPONENT
 .fixture__container {
   padding: 1rem 0 2rem;
@@ -55,16 +69,12 @@ body {
     margin-left: 1.2rem;
   }
 }
-.fixture__seeDetails--btn {
-  background-color: transparent;
-  border: 0;
-  text-align: start;
-}
 //GROUPTABLE COMPONENT
 .groups__container {
   row-gap: 2rem;
   padding-bottom: 3rem;
 }
+
 @include media-breakpoint-up(sm) {
   .logo {
     max-width: 12rem;
