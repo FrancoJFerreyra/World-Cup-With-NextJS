@@ -2,13 +2,44 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Fixture = ({ fixture, showMore, groups }) => {
-  const getArgentinaDate = (date) => {
-    const toDate = new Date(date);
-    return `${toDate.getMonth()}-${toDate.getDate()}-${toDate.getFullYear()} ${
-      toDate.getHours() - 6
-    }:00`;
+  const getArgentinaDate = (stringDate) => {
+    const toDate = new Date(stringDate);
+    return `${
+      toDate.getMonth() + 1
+    }/${toDate.getDate()}/${toDate.getFullYear()} ${toDate.getHours() - 6}:00`;
   };
-
+  const checkFinished = (stringDate) => {
+    const toDate = new Date(stringDate);
+    const matchDay = stringDate.split(' ')[0];
+    const actualLocalDate = new Date().toLocaleDateString();
+    if (new Date(actualLocalDate).getTime() > toDate.getTime()) {
+      return <p className='text-success'>Finalizado</p>;
+    }
+    if (
+      actualLocalDate === matchDay &&
+      new Date().getHours() > toDate.getHours() &&
+      new Date().getHours() < toDate.getHours() + 2
+    ) {
+      return (
+        <motion.p
+          animate={{
+            scale: [1, 1.1, 1, 1.1, 1],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            repeatDelay: 1,
+            type: 'spring',
+            stiffness: 120,
+          }}
+          className='text-success'
+        >
+          Jugando
+        </motion.p>
+      );
+    }
+    return <p className='text-light'>{stringDate}</p>;
+  };
   const matches =
     showMore || fixture.length === 4 ? fixture : fixture.slice(0, 8);
   const containerVariants = {
@@ -61,7 +92,7 @@ const Fixture = ({ fixture, showMore, groups }) => {
                     <h4>Grupo {match.group}</h4>
                   </div>
                 )}
-                <div className='d-flex justify-content-between align-items-center'>
+                <div className='d-flex justify-content-between align-items-start'>
                   <div className='d-flex flex-column gap-1'>
                     <div className='d-flex align-items-center gap-1'>
                       <img
@@ -91,7 +122,7 @@ const Fixture = ({ fixture, showMore, groups }) => {
                   </div>
                 </div>
                 <p className='text-center'>VS</p>
-                <div className='d-flex justify-content-between align-items-center'>
+                <div className='d-flex justify-content-between align-items-start'>
                   <div className='d-flex flex-column gap-1'>
                     <div className='d-flex align-items-center gap-1'>
                       <img
@@ -118,17 +149,12 @@ const Fixture = ({ fixture, showMore, groups }) => {
                   <div>
                     <p>{match.away_score}</p>
                   </div>
-                  {console.log(typeof match.local_date)}
                 </div>
                 <div>
-                  {match.finished === 'TRUE' ||
-                  new Date().getTime() >
-                    new Date(match.local_date).getTime() ? (
+                  {match.finished === 'TRUE' ? (
                     <p className='text-success'>Finalizado</p>
                   ) : (
-                    <p className='text-light'>
-                      {getArgentinaDate(match.local_date)}
-                    </p>
+                    checkFinished(getArgentinaDate(match.local_date))
                   )}
                 </div>
               </div>

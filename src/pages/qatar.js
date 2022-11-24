@@ -9,7 +9,6 @@ import GroupsTable from './components/GroupsTable';
 
 const Qatar = ({ fixtureList, groups }) => {
   const [showMore, setShowMore] = useState(false);
-  console.log(fixtureList);
   const sorted = fixtureList.sort(
     (a, b) => new Date(a.local_date) - new Date(b.local_date)
   );
