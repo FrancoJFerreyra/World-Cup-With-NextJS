@@ -5,11 +5,7 @@ body {
 }
 
 .navbar__container {
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(141, 28, 61, 1) 39%
-  );
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(141, 28, 61, 1) 39%);
 }
 
 .logo__container {
@@ -73,6 +69,9 @@ body {
 .groups__container {
   row-gap: 2rem;
   padding-bottom: 3rem;
+}
+.groupsTable__nav--underline {
+  border-bottom: 1px solid black;
 }
 
 @include media-breakpoint-up(sm) {

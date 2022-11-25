@@ -26,8 +26,18 @@ const childMatchVariants = {
 };
 
 const currentMatchVariants = {
-  animate: { scale: [1, 1.1, 1, 1.1, 1] },
-  transition: { duration: 2, repeat: Infinity, repeatDelay: 1, type: 'spring', stiffness: 120 },
+  animateV: {
+    scale: [1, 1.3, 1, 1.3, 1],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      repeatDelay: 1,
+      type: 'spring',
+      stiffness: 120,
+      ease: 'easeInOut',
+      times: [0, 0.2, 0.5, 0.8, 1],
+    },
+  },
 };
 
 export { childMatchVariants, containerMatchVariants, currentMatchVariants };

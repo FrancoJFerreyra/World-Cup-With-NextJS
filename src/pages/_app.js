@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 function MyApp({ Component, pageProps, router }) {
   return (
-    <AnimatePresence key={router.router} mode='wait'>
+    <AnimatePresence key={router.pathname} mode={'wait'}>
       <SSRProvider>
         <Component {...pageProps} />
       </SSRProvider>

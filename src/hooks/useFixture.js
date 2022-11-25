@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { currentMatchVariants } from 'framerVariants/fixtureVariants';
 
 const useFixture = () => {
-  const actualLocalDate = new Date().toLocaleString();
+  const actualLocalDate = new Date().toLocaleDateString();
   const getArgentinaDate = (stringDate) => {
     const toDate = new Date(stringDate);
     return `${toDate.getMonth() + 1}/${toDate.getDate()}/${toDate.getFullYear()} ${
@@ -11,12 +11,10 @@ const useFixture = () => {
   };
 
   const checkCurrent = (matchDay, toDate) => {
-    //CORREGIR NO FUNCIONA
     if (
       actualLocalDate === matchDay &&
-      (new Date(actualLocalDate).getHours() == toDate.getHours() ||
-        new Date(actualLocalDate).getHours() > toDate.getHours()) &&
-      new Date(actualLocalDate).getMinutes() > toDate.getMinutes()
+      new Date().getHours() >= toDate.getHours() &&
+      new Date().getHours() < toDate.getHours() + 2
     ) {
       return true;
     }
@@ -27,18 +25,9 @@ const useFixture = () => {
     const argentinaDate = getArgentinaDate(date);
     const toDate = new Date(argentinaDate);
     const matchDay = argentinaDate.split(' ')[0];
-    // if (new Date(actualLocalDate).getTime() > toDate.getTime()) {
-    //   console.log('jugado');
-    //   return <p className='text-success'>Finalizado</p>;
-    // }
-    console.log(checkCurrent(matchDay, toDate));
     if (checkCurrent(matchDay, toDate)) {
       return (
-        <motion.p
-          animate='animate'
-          transition='transition'
-          variants={currentMatchVariants}
-          className='text-success'>
+        <motion.p animate='animateV' variants={currentMatchVariants} className='text-success'>
           Jugando
         </motion.p>
       );
@@ -53,11 +42,12 @@ const useFixture = () => {
     if (checkCurrent(matchDay, toDate)) {
       return match;
     }
-    return;
+    return false;
   };
   return {
     checkCurrent,
     checkFinished,
+    currentMatch,
   };
 };
 

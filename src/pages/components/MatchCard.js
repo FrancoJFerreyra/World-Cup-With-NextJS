@@ -6,9 +6,10 @@ import { childMatchVariants } from 'framerVariants/fixtureVariants';
 const MatchCard = ({ match }) => {
   const { checkCurrent, checkFinished } = useFixture();
 
-  const printScorers = (scorers) => {
+  const printScorers = (scorers) =>
     scorers !== 'null' && scorers !== '' ? (
       <div>
+        {console.log(scorers)}
         <ol>
           {scorers.split(',').map((player, i) => (
             <li key={i} className='fixture__match--scorers'>
@@ -17,10 +18,7 @@ const MatchCard = ({ match }) => {
           ))}
         </ol>
       </div>
-    ) : (
-      ''
-    );
-  };
+    ) : null;
 
   return (
     <motion.div variants={childMatchVariants} key={match._id} className='col-sm-4 col-lg-3'>

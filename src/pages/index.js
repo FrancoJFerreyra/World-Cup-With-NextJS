@@ -8,9 +8,7 @@ import News from './components/News';
 import Navigation from './components/Navigation';
 
 const Home = ({ fixtureList, newsList }) => {
-  const upcomingMatches = fixtureList.filter(
-    (match) => new Date(match.local_date) > new Date()
-  );
+  const upcomingMatches = fixtureList.filter((match) => new Date(match.local_date) > new Date());
   const sortedFixture = upcomingMatches
     .sort((a, b) => new Date(a.local_date) - new Date(b.local_date))
     .slice(0, 4);
@@ -20,6 +18,7 @@ const Home = ({ fixtureList, newsList }) => {
       <motion.div
         initial='pageInitial'
         animate='pageAnimate'
+        transition={{ duration: 0.75, ease: 'easeOut' }}
         exit='pageExit'
         variants={{
           pageInitial: {
@@ -27,18 +26,11 @@ const Home = ({ fixtureList, newsList }) => {
           },
           pageAnimate: {
             x: 0,
-            transition: {
-              duration: 0.5,
-            },
           },
           pageExit: {
-            opacity: 0,
-            transition: {
-              duration: 0.5,
-            },
+            x: '-100vw',
           },
-        }}
-      >
+        }}>
         <div className='text-center'>
           <h1>Solo Fútbol!</h1>
         </div>
@@ -78,10 +70,7 @@ export const getServerSideProps = async ({ req, res }) => {
   // const matches = await axios.post('http://localhost:3000/api/qatar/token', {
   // 	path: '/match',
   // });
-  res.setHeader(
-    'Cache-Control',
-    'public, s-maxage=60, stale-while-revalidate=120'
-  );
+  res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=120');
   return {
     props: {
       fixtureList: dataMatches.data,

@@ -16,6 +16,7 @@ const Qatar = ({ fixtureList, groups }) => {
       <motion.div
         initial='pageInitial'
         animate='pageAnimate'
+        transition={{ duration: 0.75, ease: 'easeOut' }}
         exit='pageExit'
         variants={{
           pageInitial: {
@@ -23,15 +24,9 @@ const Qatar = ({ fixtureList, groups }) => {
           },
           pageAnimate: {
             x: 0,
-            transition: {
-              duration: 0.5,
-            },
           },
           pageExit: {
-            opacity: 0,
-            transition: {
-              duration: 0.5,
-            },
+            x: '100vw',
           },
         }}>
         <div className='container-xxl'>
@@ -61,11 +56,8 @@ const Qatar = ({ fixtureList, groups }) => {
 export default Qatar;
 
 export const getServerSideProps = async ({ req, res }) => {
-  const dataMatches = await axios.post('http://localhost:3000/api/qatar/token', {
-    path: '/match',
-  });
-  // const dataGroups = await axios.post('http://localhost:3000/api/qatar/token', {
-  //   path: '/standings',
+  // const dataMatches = await axios.post('http://localhost:3000/api/qatar/token', {
+  //   path: '/match',
   // });
   res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=120');
   return {
