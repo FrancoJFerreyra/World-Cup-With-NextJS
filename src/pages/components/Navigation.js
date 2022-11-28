@@ -48,7 +48,7 @@ const Navigation = () => {
                   id='offcanvasNavbarDropdown-expand-md dropdown__title'
                   as='ul'>
                   <li>
-                    <Link className='dropdown-item' href='/worldcuphistory/all'>
+                    <Link className='dropdown-item' href='/world_cup_history/finals'>
                       Todo
                     </Link>
                   </li>

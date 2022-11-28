@@ -30,23 +30,27 @@ const Qatar = ({ fixtureList, groups }) => {
           },
         }}>
         <div className='container-xxl'>
-          <GroupsTable groups={groups} />
-          <div className='text-center'>
-            <h2>Fixture</h2>
-          </div>
-          <Fixture fixture={sorted} showMore={showMore} />
-          <div className='text-center qatar__showMore--btn'>
-            <motion.button
-              type='button'
-              whileHover={{
-                scale: 1.1,
-                boxShadow: '0px 0px 16px rgb(176,150,119)',
-              }}
-              onClick={() => setShowMore(!showMore)}
-              className='btn btn-primary border border-3'>
-              {showMore ? 'Ver menos' : 'Ver mas'}
-            </motion.button>
-          </div>
+          <section>
+            <GroupsTable groups={groups} />
+          </section>
+          <section>
+            <div className='text-center'>
+              <h2>Fixture</h2>
+            </div>
+            <Fixture fixture={sorted} showMore={showMore} />
+            <div className='text-center qatar__showMore--btn'>
+              <motion.button
+                type='button'
+                whileHover={{
+                  scale: 1.1,
+                  boxShadow: '0px 0px 16px rgb(176,150,119)',
+                }}
+                onClick={() => setShowMore(!showMore)}
+                className='btn btn-primary border border-3'>
+                {showMore ? 'Ver menos' : 'Ver mas'}
+              </motion.button>
+            </div>
+          </section>
         </div>
       </motion.div>
     </>
