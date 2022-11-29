@@ -1,7 +1,15 @@
 @import './bootstrap.scss';
 
+html {
+  height: 100%;
+}
 body {
   background-color: #e1c396;
+}
+#__next {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .navbar__container {
@@ -31,6 +39,30 @@ body {
 //FINALS
 .finals__matches--container {
   row-gap: 2rem;
+}
+//PLAYER
+.player__container--content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.player__card--container {
+  background-color: rgba(255, 255, 255, 0.694);
+  padding: 1.5rem;
+  border-radius: 2rem;
+  img {
+    width: 100%;
+    padding-bottom: 0.75rem;
+    max-width: 18rem;
+  }
+  ul {
+    list-style-type: none;
+    max-width: 18rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+  }
 }
 //NEWS COMPONENT
 .news__container {
