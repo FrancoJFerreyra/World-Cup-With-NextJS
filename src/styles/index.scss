@@ -212,6 +212,9 @@ body {
 }
 
 @include media-breakpoint-up(md) {
+	.navigation__links {
+		color: $secondary;
+	}
 	.historyResult__match--container {
 		padding-top: 0.5rem;
 		padding-bottom: 0.5rem;
@@ -219,11 +222,5 @@ body {
 	}
 	.historyResult__matchDetails--container {
 		text-align: start;
-	}
-}
-
-@include media-breakpoint-up(lg) {
-	.navigation__links {
-		color: $secondary;
 	}
 }
