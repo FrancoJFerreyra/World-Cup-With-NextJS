@@ -76,7 +76,7 @@ hr {
 
 %heading {
 	margin-top: 0; // 1
-	margin-bottom: $headings-margin-bottom;
+	margin-bottom: 0;
 	font-family: $headings-font-family;
 	font-style: $headings-font-style;
 	font-weight: $headings-font-weight;
@@ -423,7 +423,9 @@ select {
 // Remove the dropdown arrow only from text type inputs built with datalists in Chrome.
 // See https://stackoverflow.com/a/54997118
 
-[list]:not([type='date']):not([type='datetime-local']):not([type='month']):not([type='week']):not([type='time'])::-webkit-calendar-picker-indicator {
+[list]:not([type='date']):not([type='datetime-local']):not([type='month']):not([type='week']):not(
+		[type='time']
+	)::-webkit-calendar-picker-indicator {
 	display: none !important;
 }
 
