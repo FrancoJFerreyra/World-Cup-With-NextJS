@@ -9,7 +9,6 @@ const MatchCard = ({ match = null }) => {
 	const printScorers = (scorers) =>
 		scorers !== 'null' && scorers !== '' ? (
 			<div>
-				{console.log(scorers)}
 				<ol>
 					{scorers.split(',').map((player, i) => (
 						<li key={i} className='fixture__match--scorers'>

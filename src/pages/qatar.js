@@ -54,14 +54,21 @@ const Qatar = ({ fixtureList, groups }) => {
 export default Qatar;
 
 export const getServerSideProps = async ({ req, res }) => {
-	const dataMatches = await axios.post('http://localhost:3000/api/qatar/token', {
-		path: '/match',
-	});
+	const dataMatches = async () => {
+		try {
+			const { data } = await axios.post('http://localhost:3000/api/qatar/token', {
+				path: '/match',
+			});
+			return data;
+		} catch (error) {
+			console.log(error);
+		}
+	};
 	res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=120');
 	return {
 		props: {
 			groups: dataGroups.data,
-			fixtureList: dataMatches.data,
+			fixtureList: await dataMatches(),
 		},
 	};
 };

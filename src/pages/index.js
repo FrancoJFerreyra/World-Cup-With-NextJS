@@ -54,22 +54,39 @@ const Home = ({ fixtureList, newsList }) => {
 export default Home;
 
 export const getServerSideProps = async ({ req, res }) => {
-	const newsRes = await newsApi.get('/everything', {
-		params: {
-			q: 'fifaworldcup',
-			from: '2022-11-14',
-			to: new Date(),
-			language: 'en',
-		},
-	});
-	const matches = await axios.post('http://localhost:3000/api/qatar/token', {
-		path: '/match',
-	});
+	const newsRes = async () => {
+		try {
+			const { data } = await newsApi.get('/everything', {
+				params: {
+					q: 'fifaworldcup',
+					from: '2022-11-14',
+					to: new Date(),
+					language: 'en',
+				},
+			});
+			return data;
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const { articles } = await newsRes();
+
+	const matches = async () => {
+		try {
+			const { data } = await axios.post('http://localhost:3000/api/qatar/token', {
+				path: '/match',
+			});
+			return data;
+		} catch (error) {
+			console.log(error);
+		}
+	};
 	res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=120');
 	return {
 		props: {
-			fixtureList: matches.data,
-			newsList: newsRes.data.articles.slice(0, 10),
+			fixtureList: await matches(),
+			newsList: articles.slice(0, 10),
 		},
 	};
 };
